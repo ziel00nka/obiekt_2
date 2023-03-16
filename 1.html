@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Konfigurowalny przycisk</title>
+	
+</head>
+<body>
+	<h1>Konfigurowalny przycisk</h1>
+	<button id="myButton">Kliknij mnie</button>
+	
+	<script>
+		
+		var button = document.getElementById("myButton");
+		var configPanel = document.createElement("div");
+		configPanel.style.padding = "10px";
+
+		
+		var nameLabel = document.createElement("label");
+		nameLabel.innerText = "Nazwa przycisku:";
+		var nameInput = document.createElement("input");
+		nameInput.type = "text";
+		nameInput.value = button.innerText;
+		configPanel.appendChild(nameLabel);
+		configPanel.appendChild(nameInput);
+
+		
+		var colorLabel = document.createElement("label");
+		colorLabel.innerText = "Kolor napisu:";
+		var colorInput = document.createElement("input");
+		colorInput.type = "color";
+		colorInput.value = "#ffffff";
+		configPanel.appendChild(colorLabel);
+		configPanel.appendChild(colorInput);
+
+	
+		var widthLabel = document.createElement("label");
+		widthLabel.innerText = "Szerokość przycisku:";
+		var widthInput = document.createElement("input");
+		widthInput.type = "range";
+		widthInput.min = "50";
+		widthInput.max = "300";
+		widthInput.value = button.offsetWidth;
+		configPanel.appendChild(widthLabel);
+		configPanel.appendChild(widthInput);
+
+	
+		document.body.appendChild(configPanel);
+
+	
+		nameInput.addEventListener("input", function() {
+			button.innerText = nameInput.value;
+		});
+
+		colorInput.addEventListener("input", function() {
+			button.style.color = colorInput.value;
+		});
+
+		widthInput.addEventListener("input", function() {
+			button.style.width = widthInput.value + "px";
+		});
+	</script>
+</body>
+</html>
